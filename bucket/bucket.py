@@ -35,39 +35,41 @@ class Bucket:
         time.sleep(2)
 
         while True:
-            GPIO.output(TRIG, True)
-            time.sleep(0.00001)
-            GPIO.output(TRIG, False)
+            try:
+                GPIO.output(TRIG, True)
+                time.sleep(0.00001)
+                GPIO.output(TRIG, False)
 
-            while GPIO.input(ECHO)==0:
-                pulse_start = time.time()
+                while GPIO.input(ECHO)==0:
+                    pulse_start = time.time()
 
-            while GPIO.input(ECHO)==1:
-                pulse_stop = time.time()
+                while GPIO.input(ECHO)==1:
+                    pulse_stop = time.time()
 
-            pulse_time = pulse_stop - pulse_start
+                pulse_time = pulse_stop - pulse_start
 
-            distance = pulse_time * 17150
-            print(round(distance, 2));
+                distance = pulse_time * 17150
+                print(round(distance, 2));
 
-            time.sleep(1)
+                time.sleep(1)
 
-            print("Distance (cm)", distance)
-            distance /= 2.54
-            print("Distance (in)", distance)
-            
-            print("Height of Water (in)", self.height_dim - distance)
-            
-            water_height = self.height_dim - distance 
-            vol = water_height * self.base_dim
-            
-            print("Vol (Inches^3)", vol)
-            vol /= 231
-            
-            print("Vol (gal)", vol)
-            
-            self.send(vol)
-
+                print("Distance (cm)", distance)
+                distance /= 2.54
+                print("Distance (in)", distance)
+                
+                print("Height of Water (in)", self.height_dim - distance)
+                
+                water_height = self.height_dim - distance 
+                vol = water_height * self.base_dim
+                
+                print("Vol (Inches^3)", vol)
+                vol /= 231
+                
+                print("Vol (gal)", vol)
+                
+                self.send(vol)
+            except KeyboardInterrupt:
+                print("Keyboard Interrupt")
 
 
 @app.route('/setup', methods=['GET'])
