@@ -82,7 +82,7 @@ def setup():
     with open("user.json", "w+") as file:
         file.write(json.dumps({"user": user, "bucket": bucket, "base_dim": base_dim, "height_dim": height_dim}))
     
-    bucket = Bucket(user, bucket)
+    bucket = Bucket(user, bucket, base_dim, height_dim)
     func = threading.Thread(target=bucket.start)
     func.start()
 
