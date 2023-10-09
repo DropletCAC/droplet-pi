@@ -12,8 +12,8 @@ class Bucket:
     def __init__(self, user_id, bucket, base_dim, height_dim):
         self.user_id = user_id
         self.bucket = bucket 
-        self.base_dim = base_dim
-        self.height_dim = height_dim
+        self.base_dim = float(base_dim)
+        self.height_dim = float(height_dim)
         
         
     def send(self, gal):
