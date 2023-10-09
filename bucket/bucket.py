@@ -17,7 +17,7 @@ class Bucket:
         
         
     def send(self, gal):
-        requests.post(f"https://bengal-sought-bedbug.ngrok-free.app/setBucketLevel?user={self.user_id}&bucket={self.bucket}&volume={gal}")
+        requests.post(f"https://bengal-sought-bedbug.ngrok-free.app/setTankCapacity?user={self.user_id}&bucket={self.bucket}&volume={gal}")
 
 
     def start(self):
