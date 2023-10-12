@@ -68,6 +68,8 @@ class Bucket:
                 print("Vol (gal)", vol)
                 
                 self.send(vol)
+                
+                time.sleep(60)
             except KeyboardInterrupt:
                 print("Keyboard Interrupt")
 
