@@ -73,6 +73,7 @@ class Bucket:
                 time.sleep(60)
             except KeyboardInterrupt:
                 print("Keyboard Interrupt")
+                exit()
 
 
 @app.route('/setup', methods=['GET'])
