@@ -61,7 +61,7 @@ class Bucket:
                 print("Height of Water (in)", self.height_dim - distance)
                 
                 water_height = self.height_dim - distance 
-                vol = water_height * (self.base_dim) ^ 2 * math.pi
+                vol = water_height * ((self.base_dim ^ 2) * math.pi)
                 
                 print("Vol (Inches^3)", vol)
                 vol /= 231
