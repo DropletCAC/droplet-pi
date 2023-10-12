@@ -4,6 +4,7 @@ import RPi.GPIO as GPIO
 import time, sys, os
 import threading 
 import requests
+import math 
 
 app = Flask(__name__)
 
@@ -60,7 +61,7 @@ class Bucket:
                 print("Height of Water (in)", self.height_dim - distance)
                 
                 water_height = self.height_dim - distance 
-                vol = water_height * self.base_dim
+                vol = water_height * (self.base_dim) ^2 * math.pi
                 
                 print("Vol (Inches^3)", vol)
                 vol /= 231
@@ -78,8 +79,8 @@ class Bucket:
 def setup():
     user = request.args.get('user')
     bucket = request.args.get('bucket')
-    base_dim = request.args.get('base_dim')
-    height_dim = request.args.get('height_dim')
+    base_dim = request.args.get('base_dim') #radius in inches
+    height_dim = request.args.get('height_dim') #height in inches
 
     print("Setting up and pairing to user", user)
     
