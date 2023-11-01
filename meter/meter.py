@@ -76,7 +76,7 @@ class Meter:
                 time.sleep(1)
                 self.start_counter = 0
                 print("The flow is", self.count / 7.5 / 3.785, "gal/min")
-                self.send(self.count / 7.5 / 3.785)
+                self.send(round(self.count / 7.5 / 3.785), 1)
             except KeyboardInterrupt:
                 print('\nkeyboard interrupt!')
                 GPIO.cleanup()
