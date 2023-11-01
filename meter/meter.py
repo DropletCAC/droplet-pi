@@ -51,23 +51,32 @@ class Meter:
 
                 # self.count = 0
                 # time.sleep(5)
-                x = 0
-                flows = []
-                while (x < 60):
-                    self.start_counter = 1
-                    time.sleep(1)
-                    self.start_counter = 0
-                    flows.append(self.count / 7.5 / 3.785) # Pulse frequency (Hz) = 7.5Q, Q is flow rate in L/min.
-                    print("The flow is: %.3f gal/min" % (flows[-1]), x)
-                    self.count = 0
-                    if flows[-1] > 0:
-                        x += 1
 
-                flows = np.array(flows)
-                avg_flow = np.mean(flows)
-                print("AVG FLOW", avg_flow)
-                self.send(avg_flow)
+
+                # USE THIS IN REAL WORLD
+                # x = 0
+                # flows = []
+                # while (x < 5):
+                #     self.start_counter = 1
+                #     time.sleep(1)
+                #     self.start_counter = 0
+                #     flows.append(self.count / 7.5 / 3.785) # Pulse frequency (Hz) = 7.5Q, Q is flow rate in L/min.
+                #     print("The flow is: %.3f gal/min" % (flows[-1]), x)
+                #     self.count = 0
+                #     if flows[-1] > 0:
+                #         x += 1
+
+                # flows = np.array(flows)
+                # avg_flow = np.mean(flows)
+                # print("AVG FLOW", avg_flow)
+                # self.send(avg_flow)
                 
+                #DEMO ONLY
+                self.start_counter = 1
+                time.sleep(1)
+                self.start_counter = 0
+                print("The flow is", self.count / 7.5 / 3.785, "gal/min")
+                self.send(self.count / 7.5 / 3.785)
             except KeyboardInterrupt:
                 print('\nkeyboard interrupt!')
                 GPIO.cleanup()
